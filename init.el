@@ -26,6 +26,11 @@
 (use-package pdf-tools)
 (use-package nov)
 (use-package elfeed)
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
