@@ -13,8 +13,4 @@
 (setq display-line-numbers-type 'relative)
 (setq column-number-mode 1)
 
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-
 (pixel-scroll-precision-mode)

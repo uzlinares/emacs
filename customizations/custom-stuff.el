@@ -1,11 +1,5 @@
 ;; custom stuff
 
-;; close all buffers
-(defun nuke-all-buffers ()
-  (interactive)
-  (mapcar 'kill-buffer (buffer-list))
-  (delete-other-windows))
-
 ;; load bashrc file
 (exec-path-from-shell-initialize)
 
