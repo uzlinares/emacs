@@ -29,17 +29,22 @@
 (use-package ivy
   :config
   (ivy-mode)
-  (setopt ivy-use-virtual-buffers t)
   (setopt enable-recursive-minibuffers t))
 (use-package go-mode)
 (use-package rust-mode)
 (use-package vterm)
 (use-package yaml-mode)
 (use-package auctex)
-(use-package exec-path-from-shell)
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
 (use-package fireplace)
-(use-package pdf-tools)
-(use-package nov)
+(use-package pdf-tools
+  :config
+  (pdf-tools-install))
+(use-package nov
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 (use-package elfeed)
 (use-package yasnippet
   :config
@@ -62,3 +67,5 @@
 (load "dired-setup")
 (load "elfeed-setup")
 (load custom-file :no-error-if-file-is-missing)
+
+(load "ox-md")

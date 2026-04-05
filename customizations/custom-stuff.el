@@ -1,8 +1,5 @@
 ;; custom stuff
 
-;; load bashrc file
-(exec-path-from-shell-initialize)
-
 ;; make vterm the default terminal in projects
 (defun my-project-shell ()
   "Start an inferior shell in the current project's root directory.
@@ -22,12 +19,6 @@ if one already exists."
       (vterm (generate-new-buffer-name default-project-shell-name)))))
 
 (advice-add 'project-shell :override #'my-project-shell)
-
-;; pdf
-(pdf-tools-install)
-
-;; epub
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 ;; generate an email alias
 (defun generate-email-alias (suffix strategy)
