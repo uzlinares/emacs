@@ -8,10 +8,6 @@
 
 (global-set-key (kbd "C-c m") 'rmail)
 
-;; magit
-(global-set-key (kbd "C-c g") 'magit)
-
-
 (defun clear-eshell-screen ()
   (interactive)
   (eshell/clear t)
