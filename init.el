@@ -35,9 +35,9 @@
   (setq window-combination-resize t)
   (setq set-mark-command-repeat-pop t)
   (setq help-window-select t)
-  (setq repeat-mode t))
+  (repeat-mode)
+  (rebuild-mail-abbrevs "~/.mailrc.gpg"))
 (use-package magit
-  :bind ("C-c g" . magit)
   :demand t)
 (use-package zig-mode)
 (use-package company
@@ -58,6 +58,7 @@
   :config
   (exec-path-from-shell-initialize))
 (use-package pdf-tools
+  :demand t
   :config
   (pdf-tools-install))
 (use-package nov
@@ -71,14 +72,14 @@
   :config
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
-
-;; registers and bookmarks
-(set-register ?i '(file . "~/.config/emacs/init.el"))
-(set-register ?n '(file . "~/org/notes/"))
+(use-package org-drill
+  :after 'org)
 
 (setq bookmark-save-flag 1)
 
 (add-to-list 'load-path "~/.config/emacs/customizations")
+
+(load "registers")
 (load "custom-stuff")
 (load "ui")
 (load "programming")
