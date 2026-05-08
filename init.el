@@ -36,6 +36,10 @@
   (setq set-mark-command-repeat-pop t)
   (setq help-window-select t)
   (repeat-mode)
+  (display-time-mode)
+  (display-battery-mode))
+(use-package rmail
+  :config
   (rebuild-mail-abbrevs "~/.mailrc.gpg"))
 (use-package magit
   :demand t)
@@ -55,6 +59,7 @@
 (use-package yaml-mode)
 (use-package auctex)
 (use-package exec-path-from-shell
+  :demand t
   :config
   (exec-path-from-shell-initialize))
 (use-package pdf-tools
@@ -62,6 +67,7 @@
   :config
   (pdf-tools-install))
 (use-package nov
+  :demand t
   :config
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 (use-package elfeed
@@ -73,7 +79,14 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 (use-package org-drill
-  :after 'org)
+  :after org)
+(use-package emms
+  :config
+  (emms-all)
+  (setq emms-player-list '(emms-player-vlc)
+	emms-info-functions '(emms-info-native)
+	emms-source-file-default-directory "~/Music/")
+  :bind (("C-c C-p f" . emms-play-file) ("C-c C-p d" . emms-play-directory)))
 
 (setq bookmark-save-flag 1)
 
@@ -88,5 +101,4 @@
 (load "org-setup")
 (load "dired-setup")
 (load "elfeed-setup")
-
 (load "ox-md")
