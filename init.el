@@ -86,7 +86,11 @@
   (setq emms-player-list '(emms-player-vlc)
 	emms-info-functions '(emms-info-native)
 	emms-source-file-default-directory "~/Music/")
-  :bind (("C-c C-p f" . emms-play-file) ("C-c C-p d" . emms-play-directory)))
+  :bind (("C-c C-m f" . emms-play-file)
+	 ("C-c C-m d" . emms-play-directory)
+	 ("C-c C-m SPC" . emms-pause)
+	 ("C-c C-m n" . emms-next)
+	 ("C-c C-m p" . emms-previous)))
 
 (setq bookmark-save-flag 1)
 
