@@ -35,6 +35,8 @@
   (setq window-combination-resize t)
   (setq set-mark-command-repeat-pop t)
   (setq help-window-select t)
+  (setq display-time-format "%a %b %d %H:%M"
+	display-time-default-load-average nil)
   (repeat-mode)
   (display-time-mode)
   (display-battery-mode))
@@ -86,11 +88,11 @@
   (setq emms-player-list '(emms-player-vlc)
 	emms-info-functions '(emms-info-native)
 	emms-source-file-default-directory "~/Music/")
-  :bind (("C-c C-m f" . emms-play-file)
-	 ("C-c C-m d" . emms-play-directory)
-	 ("C-c C-m SPC" . emms-pause)
-	 ("C-c C-m n" . emms-next)
-	 ("C-c C-m p" . emms-previous)))
+  :bind (("C-c SPC f" . emms-play-file)
+	 ("C-c SPC d" . emms-play-directory)
+	 ("C-c SPC SPC" . emms-pause)
+	 ("C-c SPC n" . emms-next)
+	 ("C-c SPC p" . emms-previous)))
 
 (setq bookmark-save-flag 1)
 
