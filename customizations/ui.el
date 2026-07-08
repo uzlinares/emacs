@@ -1,14 +1,17 @@
-;; ui
-
+;; ui  -*- lexical-binding: t; -*-
 (defvar
   light-theme
-  'modus-operandi-deuteranopia
+  'modus-operandi-tinted
   "*My light theme selection.")
 (defvar
   dark-theme
   'modus-vivendi-tinted
   "*My dark theme selection.")
 (defvar active-theme nil "Active theme selected.")
+
+(progn
+  (load-theme light-theme)
+  (setq active-theme light-theme))
 
 (defun switch-active-theme ()
   "Switch between light and dark selected theme."
@@ -31,6 +34,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'org-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 (setq column-number-mode 1)
 
