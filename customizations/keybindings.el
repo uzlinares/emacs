@@ -1,4 +1,4 @@
-;; keybindings
+;; keybindings  -*- lexical-binding: t; -*-
 
 (global-set-key (kbd "C-x K") 'nuke-all-buffers)
 

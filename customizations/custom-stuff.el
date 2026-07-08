@@ -1,4 +1,4 @@
-;; custom stuff
+;; custom stuff  -*- lexical-binding: t; -*-
 
 ;; make vterm the default terminal in projects
 (defun my-project-shell ()
