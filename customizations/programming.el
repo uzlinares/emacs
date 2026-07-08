@@ -1,4 +1,4 @@
-;; programming
+;; programming  -*- lexical-binding: t; -*-
 
 ;; auctex
 (setq TeX-auto-save t)
@@ -18,6 +18,15 @@
 
 ;; C/C++
 (setq c-default-style "cc-mode")
+
+;; sql
+(defun sql-config()
+  (setq-local
+   tab-width 4
+   tab-stop-list '(4 8 12 16 20)
+   indent-tabs-mode nil))
+(add-hook 'sql-mode-hook 'sql-config)
+
 
 ;; magit
 (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1) ;; make magit-status fill entire frame
