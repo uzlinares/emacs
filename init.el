@@ -1,4 +1,4 @@
-;; My config
+;; My config  -*- lexical-binding: t; -*-
 
 ;; straight bootstrap
 (defvar bootstrap-version)
@@ -18,6 +18,7 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; Packages
+(straight-use-package 'org)
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 (setq use-package-always-defer t)
@@ -39,7 +40,8 @@
 	display-time-default-load-average nil)
   (repeat-mode)
   (display-time-mode)
-  (display-battery-mode))
+  (display-battery-mode)
+  (setq mode-line-collapse-minor-modes '(yas-minor-mode company-mode eldoc-mode ivy-mode auto-revert-mode zig-format-on-save-mode)))
 (use-package rmail
   :config
   (rebuild-mail-abbrevs "~/.mailrc.gpg"))
@@ -71,7 +73,8 @@
 (use-package nov
   :demand t
   :config
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  (setq nov-text-width 80))
 (use-package elfeed
   :demand t
   :bind ("C-c n" . elfeed))
@@ -81,6 +84,7 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 (use-package org-drill
+  :demand t
   :after org)
 (use-package emms
   :config
@@ -92,7 +96,26 @@
 	 ("C-c SPC d" . emms-play-directory)
 	 ("C-c SPC SPC" . emms-pause)
 	 ("C-c SPC n" . emms-next)
-	 ("C-c SPC p" . emms-previous)))
+	 ("C-c SPC p" . emms-previous)
+	 ("C-c SPC m" . emms)))
+(use-package org-roam
+  :after org
+  :demand t
+  :config
+  (setq
+   org-roam-directory "~/org/roam/"
+   org-roam-dailies-directory "daily/"
+   org-roam-dailies-capture-templates
+   '(("d" "default" entry
+      "* %?"
+      :target (file+head "%<%Y-%m-%d>.org"
+                         "#+title: %<%Y-%m-%d>\n"))))
+  (org-roam-db-autosync-mode)
+  :bind (("C-c C-r j" . org-roam-dailies-capture-today)
+	 ("C-c C-r i" . org-roam-node-insert)
+	 ("C-c C-r c" . org-roam-capture)
+	 ("C-c C-r f" . org-roam-node-find)
+	 ("C-c C-r t" . org-roam-dailies-goto-today)))
 
 (setq bookmark-save-flag 1)
 
